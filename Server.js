@@ -1,48 +1,43 @@
 const express = require('express')
 const app = express()
 const data = require('./data.json')
-const bodyParser = require('body-parser')
-
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-
 
 
 app.get('/',(req, res) => {
-    res.send("wow")
+    res.send("Nani")
 })
 
-app.post('/data', intercep , (req, res) => {
+app.post('/data', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data)
 })
 
-app.post('/data/root', intercep , (req, res) => {
+app.post('/data/root', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.root)
 })
 
-app.post('/data/root/:name', intercep , (req, res) => {
+app.post('/data/root/:name',  (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.root.find(data => data.name === req.params.name))
 })
 
-app.post('/data/matrix', intercep , (req, res) => {
+app.post('/data/matrix', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.matrix)
 })
 
-app.post('/data/matrix/:name', intercep , (req, res) => {
+app.post('/data/matrix/:name', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.matrix.find(data => data.name === req.params.name))
 })
 
-app.post('/data/interpolation', intercep , (req, res) => {
+app.post('/data/interpolation',  (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.interpolation)
 })
 
-app.post('/data/interpolation/:name', intercep , (req, res) => {
+app.post('/data/interpolation/:name',  (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.interpolation.find(data => data.name === req.params.name))
 })
